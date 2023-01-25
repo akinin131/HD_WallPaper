@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hd Обои</string>
+
+    <string name="set_as_wallpaper_completed">Фотография установлена в качестве обоев</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
