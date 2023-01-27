@@ -28,6 +28,7 @@
         </activity>
         <activity
             android:name=".SplashScreen.SplasheScreen"
+            android:theme="@style/Theme.Hd_WallpaperSplasher"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -33,7 +33,7 @@ class PixabayImagesRecyclerView : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         if (holder is ViewHolder) {
             val url = items[position].webformatImage
             Glide.with(holder.image.context).load(url).into(holder.image)
-            holder.itemView.setOnClickListener{
+            holder.itemView.setOnClickListener {
                 PhotoActivity.start.start1(caller = holder.image.context, url = url)
 
             }
@@ -45,7 +45,8 @@ class PixabayImagesRecyclerView : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         return items.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         val image = itemView.pixabay_webformat_image
 
@@ -55,7 +56,6 @@ class PixabayImagesRecyclerView : RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
         override fun onClick(view: View) {
             val position = adapterPosition
-
         }
     }
 }

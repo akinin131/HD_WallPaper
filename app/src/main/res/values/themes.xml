@@ -16,4 +16,9 @@
     <style name="Theme.Hd_WallpaperBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
     </style>
+    <style name="Theme.Hd_WallpaperSplasher" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+    </style>
 </resources>

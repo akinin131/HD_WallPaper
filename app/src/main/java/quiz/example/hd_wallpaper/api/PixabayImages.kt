@@ -6,10 +6,11 @@ import com.google.gson.annotations.SerializedName
 class PixabayImages {
     @SerializedName("hits")
     @Expose
-    val hits:ArrayList<PixabayWebFormatImages>?=null
+    val hits: ArrayList<PixabayWebFormatImages>? = null
 }
-class PixabayWebFormatImages{
+
+class PixabayWebFormatImages {
     @SerializedName("webformatURL")
     @Expose
-    val webformatImage:String?=null
+    val webformatImage: String? = null
 }

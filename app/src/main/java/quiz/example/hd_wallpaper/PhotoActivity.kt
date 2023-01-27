@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import kotlinx.android.synthetic.main.activity_splashe_screen.*
 import quiz.example.hd_wallpaper.PhotoActivity.MyClass.Companion.EXTRA_URL
 import quiz.example.hd_wallpaper.databinding.ActivityPhotoBinding
+
 import java.io.IOException
 
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -40,6 +41,7 @@ class PhotoActivity : AppCompatActivity() {
 
         }
     }
+
     private var imageView: SubsamplingScaleImageView? = null
     private var toolbar: Toolbar? = null
 
@@ -47,11 +49,11 @@ class PhotoActivity : AppCompatActivity() {
 
     private var photo: Bitmap? = null
 
-    class  start() {
+    class start() {
 
-        companion object{
+        companion object {
 
-            fun start1 (caller: Context, url: String?){
+            fun start1(caller: Context, url: String?) {
 
                 val intent = Intent(caller, PhotoActivity::class.java)
                 intent.putExtra(EXTRA_URL, url)
@@ -69,7 +71,7 @@ class PhotoActivity : AppCompatActivity() {
         imageView = findViewById(R.id.image)
         toolbar = findViewById(R.id.toolbar)
         toolbar?.setTitle("")
-       // setSupportActionBar(toolbar.)
+        // setSupportActionBar(toolbar.)
 
         ImageLoader.getInstance()
             .loadImage(intent.getStringExtra(EXTRA_URL), object : SimpleImageLoadingListener() {
@@ -102,10 +104,12 @@ class PhotoActivity : AppCompatActivity() {
             false
         })
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_photo, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_set_wallpaper -> {
@@ -116,26 +120,33 @@ class PhotoActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
     override fun onDestroy() {
         super.onDestroy()
     }
+
     private fun hideActionBar() {
         toolbar!!.animate().translationY((-toolbar!!.height).toFloat()).setDuration(300).start()
         isToolbarVisible = false
     }
+
     private fun showActionBar() {
         toolbar!!.animate().translationY(0F).setDuration(300).start()
         isToolbarVisible = true
     }
 
     private fun performSharing() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) === PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) === PackageManager.PERMISSION_GRANTED
         ) {
-            val path = MediaStore.Images.Media.insertImage(contentResolver,
+            val path = MediaStore.Images.Media.insertImage(
+                contentResolver,
                 photo,
                 intent.getStringExtra(EXTRA_URL),
-                "")
+                ""
+            )
             val uri = Uri.parse(path)
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "image/jpeg"
@@ -143,8 +154,10 @@ class PhotoActivity : AppCompatActivity() {
             //startActivity(Intent.createChooser(intent, getString(R.string.share)))
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    REQUEST_PERMISSION_WRITE_STORAGE)
+                requestPermissions(
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    REQUEST_PERMISSION_WRITE_STORAGE
+                )
             }
         }
     }
@@ -157,7 +170,8 @@ class PhotoActivity : AppCompatActivity() {
                 Snackbar.make(
                     it,
                     getString(R.string.set_as_wallpaper_completed),
-                    Snackbar.LENGTH_SHORT).show()
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         } catch (e: IOException) {
             e.printStackTrace()

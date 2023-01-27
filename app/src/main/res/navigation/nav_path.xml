@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_path"
+    app:startDestination="@id/blankFragment">
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="quiz.example.hd_wallpaper.Category.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_modaFragment"
+            app:destination="@id/modaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modaFragment"
+        android:name="quiz.example.hd_wallpaper.Category.ModaFragment"
+        android:label="fragment_moda"
+        tools:layout="@layout/fragment_moda" >
+        <action
+            android:id="@+id/action_modaFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+    </fragment>
+</navigation>

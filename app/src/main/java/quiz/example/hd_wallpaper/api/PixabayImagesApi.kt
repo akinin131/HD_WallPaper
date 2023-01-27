@@ -10,5 +10,5 @@ import retrofit2.http.Query
 interface PixabayImagesApi {
 
     @GET("/api/?key=33106230-b104905cd7ff74ed17e2229af&q=yellow+flowers&image_type=photo\n")
-    fun getWebFormatImages(@Query("q")query: String): Single<Response<PixabayImages>>
+    fun getWebFormatImages(@Query("q") query: String): Single<Response<PixabayImages>>
 }
