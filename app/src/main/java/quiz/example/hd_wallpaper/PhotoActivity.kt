@@ -153,12 +153,10 @@ class PhotoActivity : AppCompatActivity() {
             intent.putExtra(Intent.EXTRA_STREAM, uri)
             //startActivity(Intent.createChooser(intent, getString(R.string.share)))
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(
-                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    REQUEST_PERMISSION_WRITE_STORAGE
-                )
-            }
+            requestPermissions(
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION_WRITE_STORAGE
+            )
         }
     }
 

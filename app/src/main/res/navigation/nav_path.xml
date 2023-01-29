@@ -6,16 +6,16 @@
     app:startDestination="@id/blankFragment">
     <fragment
         android:id="@+id/blankFragment"
-        android:name="quiz.example.hd_wallpaper.Category.BlankFragment"
+        android:name="quiz.example.hd_wallpaper.Fragment.CategoriesFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" >
+        tools:layout="@layout/fragment_categories" >
         <action
             android:id="@+id/action_blankFragment_to_modaFragment"
             app:destination="@id/modaFragment" />
     </fragment>
     <fragment
         android:id="@+id/modaFragment"
-        android:name="quiz.example.hd_wallpaper.Category.ModaFragment"
+        android:name="quiz.example.hd_wallpaper.Fragment.WallpaperOneFragment"
         android:label="fragment_moda"
         tools:layout="@layout/fragment_moda" >
         <action

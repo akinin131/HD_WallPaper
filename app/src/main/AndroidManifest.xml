@@ -11,6 +11,7 @@
     <application
         android:name=".application"
         android:allowBackup="true"
+
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -22,12 +23,14 @@
         <activity
             android:name=".PhotoActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Hd_WallpaperBar"
             >
 
         </activity>
         <activity
             android:name=".SplashScreen.SplasheScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Hd_WallpaperSplasher"
             android:exported="true">
             <intent-filter>
@@ -38,6 +41,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false">
 
         </activity>

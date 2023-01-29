@@ -10,7 +10,7 @@ class PixabayImages {
 }
 
 class PixabayWebFormatImages {
-    @SerializedName("webformatURL")
+    @SerializedName("largeImageURL")
     @Expose
     val webformatImage: String? = null
 }

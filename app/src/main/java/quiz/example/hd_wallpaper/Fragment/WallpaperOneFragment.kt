@@ -1,4 +1,4 @@
-package quiz.example.hd_wallpaper.Category
+package quiz.example.hd_wallpaper.Fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import quiz.example.hd_wallpaper.Adapter.PixabayImagesRecyclerView
+import quiz.example.hd_wallpaper.Fragment.WallpaperOneFragment.MyClass.Companion.Qury
 import quiz.example.hd_wallpaper.PixabayImages
 import quiz.example.hd_wallpaper.api.PixabayImagesApi
 import quiz.example.hd_wallpaper.databinding.FragmentModaBinding
@@ -20,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 @Suppress("UNREACHABLE_CODE")
-class ModaFragment : Fragment() {
+class WallpaperOneFragment : Fragment() {
 
 
     lateinit var binding: FragmentModaBinding
@@ -46,6 +47,7 @@ class ModaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.emptyImage.visibility = View.GONE
         val baseUrl = "https://pixabay.com/api/"
         val retrofitBuilder = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -53,7 +55,7 @@ class ModaFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val api = retrofitBuilder.create(PixabayImagesApi::class.java)
-        pixabayImageQuery(api, "Qury")
+        pixabayImageQuery(api, Qury)
 
         init()
 
@@ -66,13 +68,6 @@ class ModaFragment : Fragment() {
         binding.recyclerView.layoutManager = layouManager
         binding.recyclerView.adapter = adapter
         binding.recyclerView.setHasFixedSize(true)
-
-        val itemCount = adapter.itemCount
-        if (itemCount > 0) {
-            binding.emptyImage.visibility = View.GONE
-        } else {
-            binding.emptyImage.visibility = View.VISIBLE
-        }
     }
 
     private fun pixabayImageQuery(api: PixabayImagesApi, query: String) {
@@ -82,7 +77,7 @@ class ModaFragment : Fragment() {
             .subscribe(::handleData) {
 
                 Log.e("MainActivity", "eror")
-
+                binding.emptyImage.visibility = View.VISIBLE
             }
     }
 
